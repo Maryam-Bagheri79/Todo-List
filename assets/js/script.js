@@ -1,6 +1,6 @@
 ﻿let $ = document
 
-let inputTodo = $.querySelector('.m-auto')
+let inputTodo = $.querySelector('.form-control')
 
 let deleteTodo = $.querySelectorAll('.delete')
 
@@ -24,16 +24,14 @@ function keyDownInput(event) {
       "
     >
       <span>${inputTodo.value}</span>
-      <i class="fa fa-trash-o delete"></i>
+      <i class="fa fa-trash-o delete" onclick = 'removeTodo(event)'></i>
     </li>`
 
       todos.insertAdjacentHTML("beforeend", newTodo)
 
-
       inputTodo.value = ''
 
     }
-
 
 
   }
@@ -42,15 +40,8 @@ function keyDownInput(event) {
 
 inputTodo.addEventListener('keydown', keyDownInput)
 
-deleteTodo.forEach(function (event) {
+function removeTodo(event) {
 
+  event.target.parentElement.remove();
 
-  event.addEventListener('click', function (event) {
-
-    // event.preventDefault()
-
-    event.target.parentElement.remove()
-
-  })
-
-})
+}
